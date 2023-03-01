@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      DB_CONNECTION_STR: "mssql+pyodbc://sa:YourStrong!Passw0rd@db/api_tester_db?driver=ODBC+Driver+17+for+SQL+Server"
